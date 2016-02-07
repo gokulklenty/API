@@ -1,14 +1,13 @@
 // var SiteTrackModel = require('../models/sitetrack.server.model.js')
 
 exports.postDetails = function (req,res) {
-  var Obj = req.body;
-  var today = new Date();
-
+  // var Obj = req.body;
+  // var today = new Date();
+  //
   // if(Obj.event=='load'){
   //   if(Obj.id){
   //     SiteTrackModel.findByIdAndUpdate(Obj.id,{$set:{
-  //       'live':true,
-  //       'lastIp':ip
+  //
   //     }},function (err) {
   //       if(err) console.log(err);
   //     });
@@ -43,6 +42,6 @@ exports.postDetails = function (req,res) {
   //     if(err) console.log(err);
   //   });
   // }
-  console.log(req.connection,res.body);
+  console.log(req.body);
   res.send('hi');
 };

