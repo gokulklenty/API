@@ -44,5 +44,5 @@ exports.postDetails = function (req,res) {
   //   });
   // }
   console.log(req.connection,res.body);
-  res.send(req.connection);
+  res.send('hi');
 };

