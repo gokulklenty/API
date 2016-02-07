@@ -19,11 +19,30 @@ exports.postDetails = function (req,res) {
   //     'lastIp':ip,
   //     'lastSeen': ,
   //     'lastSpendTime': ,
+  //     'totalSpendTime':// if(Obj.event=='load'){
+  //   if(Obj.id){
+  //     SiteTrackModel.findByIdAndUpdate(Obj.id,{$set:{
+  //       'live':true,
+  //       'lastIp':ip
+  //     }},function (err) {
+  //       if(err) console.log(err);
+  //     });
+  //   }
+  // }else if (Obj.event=='unload') {
+  //   SiteTrackModel.findByIdAndUpdate(Obj.id,{$set:{
+  //     'live':false,
+  //     'lastIp':ip,
+  //     'lastSeen': ,
+  //     'lastSpendTime': ,
   //     'totalSpendTime':
   //   }},function (err) {
   //     if(err) console.log(err);
   //   });
   // }
+  //   }},function (err) {
+  //     if(err) console.log(err);
+  //   });
+  // }
   console.log(req.connection,res.body);
-  res.send("Success");
+  res.send(req.connection);
 };
