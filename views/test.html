@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>Parent Frame</title>
+    <script>
+    function post(url, data, headers) {
+        return Promise.resolve(
+            $.ajax({
+                url: url,
+                datatype:"json",
+                type: "POST",
+                data: data,
+                headers: headers
+            })
+        );
+    };
+      // window.addEventListener('beforeunload', function(event) {
+      //     console.log('I am the 1st one.');
+      // });
+      window.addEventListener('load',function () {
+        var x = JSON.parse(document.cookie);
+        if(x){
+          post('https://sleepy-everglades-45938.herokuapp.com/',dataObj,null).then(function(data,err){
+        //console.log(data);
+          if(err)
+            console.log(err);
+          else{
+            console.log(data);
+          }
+        });
+          console.log(x);
+        }else {
+          document.cookie ="{id:123456789}";
+        }
+
+      });
+
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
