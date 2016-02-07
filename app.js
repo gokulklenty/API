@@ -14,6 +14,12 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://mailtrack:mailtrack@ds037272.mongolab.com:37272/mailtrack', function (error) {
+    if (error) {
+        console.log(error);
+    }
+});
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
