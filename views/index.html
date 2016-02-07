@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parent Frame</title>
+    <script>
+      // window.addEventListener('beforeunload', function(event) {
+      //     console.log('I am the 1st one.');
+      // });
+      window.addEventListener('load',function () {
+        console.log('loaded');
+        var x = document.cookie;
+        if(x){
+          console.log(x);
+        }else {
+          document.cookie ="username=Gokul";
+          console.log('nothing');
+        }
+
+      })
+
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
