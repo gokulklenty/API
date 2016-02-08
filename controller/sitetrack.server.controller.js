@@ -1,24 +1,25 @@
 var SiteTrackModel = require('../models/sitetrack.server.model');
 
 exports.postDetails = function (req,res) {
-  var Obj = req.body;
-  var today = new Date();
-  var ip = req.connection.remoteAddress;
-  if (ip.length< 15){
-     ip = ip;
-  }else{
-     var nyIP = ip.slice(7);
-     ip = nyIP;
-  }
-  var arr = Obj.visitArray;
-  arr.ipDetais = ip;
-  SiteTrackModel.findByIdAndUpdate(Obj.id,{$push:{'visitArray':arr}},function (err) {
-    if(err) console.log(err);
-    res.send('true');
-
-  });
+  // var Obj = req.body;
+  // var today = new Date();
+  // var ip = req.connection.remoteAddress;
+  // if (ip.length< 15){
+  //    ip = ip;
+  // }else{
+  //    var nyIP = ip.slice(7);
+  //    ip = nyIP;
+  // }
+  // var arr = Obj.visitArray;
+  // arr.ipDetais = ip;
+  // SiteTrackModel.findByIdAndUpdate(Obj.id,{$push:{'visitArray':arr}},function (err) {
+  //   if(err) console.log(err);
+  //   res.send('true');
+  //
+  // });
 
   console.log(req.body);
+  res.send({"status":true})
 };
 
 exports.getTrackingId = function (req,res) {
