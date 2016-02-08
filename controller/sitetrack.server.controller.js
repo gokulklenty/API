@@ -19,7 +19,7 @@ exports.postDetails = function (req,res) {
   });
 
   console.log(req.body);
-  res.send({"status":true})
+  // res.send({"status":true})
 };
 
 exports.getTrackingId = function (req,res) {
