@@ -10,5 +10,7 @@ app.get('/test/', function(req, res, next) {
   res.render('test', { title: 'Express' });
 });
 app.post('/data',siteTrack.postDetails);
+app.post('/getTrackingId',siteTrack.getTrackingId);
+
 
 module.exports = app;
