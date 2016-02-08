@@ -34,14 +34,19 @@ window.addEventListener('load',function () {
 // beforeunload
 window.addEventListener('click',function () {
   outT = new Date();
-  duration = outT- inT;
-  url = window.location.href;
+  var duration = outT- inT;
+  var url = window.location.href;
+  var dataObj ={
+    time: inT,
+    duration: duration,
+    urlVisited: url
+  }
   console.log('unloaded');
   var x = document.cookie;
   var cookie = JSON.parse('{'+ x +'}')
   if(x){
     console.log(cookie);
-     post('https://sleepy-everglades-45938.herokuapp.com/data',cookie,null).then(function(data,err){
+     post('https://sleepy-everglades-45938.herokuapp.com/data',dataObj,null).then(function(data,err){
        console.log(data);
      });
   }
