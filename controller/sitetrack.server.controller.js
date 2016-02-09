@@ -1,4 +1,6 @@
 var SiteTrackModel = require('../models/sitetrack.server.model');
+var MailTrackModel = require('../models/mailtrack.server.model');
+
 
 exports.postDetails = function (req,res) {
   var Obj = req.body;

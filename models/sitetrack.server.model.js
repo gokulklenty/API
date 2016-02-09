@@ -9,7 +9,7 @@ var SiteTrackSchema   = new Schema({
     visitArray:[{
       time: Date,
       duration: Number,
-      ipDetais:String,
+      ipDetails:{},
       urlVisited: String
     }]
 });
