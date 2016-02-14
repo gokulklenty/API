@@ -18,11 +18,11 @@ function post(url, data, headers) {
 var inT, outT, pid;
 window.addEventListener('load',function () {
   inT = new Date();
-  console.log('loaded');
+  console.log('loaded',document.cookie);
   var x = document.cookie;
+  var now = new Date();
+  now.setYear(now.getFullYear()+1);
   if(!x){
-    var now = new Date();
-    now.setYear(now.getFullYear()+1);
     console.log(now.toUTCString());
     dataObj ={
       ownerId:ownerId
@@ -32,17 +32,42 @@ window.addEventListener('load',function () {
        console.log(data);
       //  $.cookie("klenty_API_id", data.id.toString(), { expires: 1000 });
        document.cookie ='"klenty_API_id":"'+data.id.toString()+'"; expires='+now.toUTCString();
-     });
-  }else{
-    var cookie = JSON.parse('{'+ x +'}');
-    var dataObj ={
-      id: cookie.klenty_API_id,
-      ownerId: ownerId
-    }
-    post('https://sleepy-everglades-45938.herokuapp.com/findSiteUser',dataObj,null).then(function(data,err){
-      console.log(data);
-    });
-  }
+
+        var cookie = JSON.parse('{'+ x +'}');
+        if(!cookie.pEmail){
+          console.log(cookie);
+          if(!cookie.pEmail){
+            var dataObj ={
+              id: data.id,
+              ownerId: ownerId
+            }
+            post('https://sleepy-everglades-45938.herokuapp.com/findSiteUser',dataObj,null).then(function(userData,err){
+              console.log(userData);
+              if(userData.data)
+                document.cookie ='"klenty_API_id":"'+dataObj.id.toString()+'","pEmail":"'+userData.data.pEmail+'"; expires="'+now.toUTCString()+'";';
+
+            });
+          }
+        }
+      });
+   }else {
+     var cookie = JSON.parse('{'+ x +'}');
+     if(!cookie.pEmail){
+       console.log("cookie",cookie);
+       if(!cookie.pEmail){
+         var dataObj ={
+           id: cookie.klenty_API_id,
+           ownerId: ownerId
+         }
+         post('https://sleepy-everglades-45938.herokuapp.com/findSiteUser',dataObj,null).then(function(data,err){
+           console.log(data);
+           if(data.data)
+             document.cookie ='"klenty_API_id":"'+dataObj.id.toString()+'","pEmail":"'+data.data.pEmail+'"; expires="'+now.toUTCString()+'";';
+
+         });
+       }
+     }
+   }
 });
 // beforeunload
 window.addEventListener('click',function () {
